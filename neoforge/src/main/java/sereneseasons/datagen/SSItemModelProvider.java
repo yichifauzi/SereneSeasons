@@ -2,19 +2,15 @@
  * Copyright 2022, the Glitchfiend Team.
  * All rights reserved.
  ******************************************************************************/
-package sereneseasons.forge.datagen;
+package sereneseasons.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import sereneseasons.api.SSItems;
 import sereneseasons.core.SereneSeasons;
-import sereneseasons.forge.core.SereneSeasonsForge;
 import sereneseasons.item.CalendarType;
 
 public class SSItemModelProvider extends ItemModelProvider
@@ -70,18 +66,8 @@ public class SSItemModelProvider extends ItemModelProvider
             .model(calendarNull);
     }
 
-    public ItemModelBuilder basicItem(RegistryObject<Item> item)
-    {
-        return this.basicItem(getItemLocation(item));
-    }
-
     private static ResourceLocation location(String name)
     {
         return new ResourceLocation(SereneSeasons.MOD_ID, name);
-    }
-
-    private static ResourceLocation getItemLocation(RegistryObject<Item> obj)
-    {
-        return obj.getKey().location();
     }
 }

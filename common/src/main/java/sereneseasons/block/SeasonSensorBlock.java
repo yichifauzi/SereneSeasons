@@ -96,25 +96,25 @@ public class SeasonSensorBlock extends BaseEntityBlock
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult rayTraceResult)
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult rayTraceResult)
     {
         if (player.mayBuild())
         {
-            if (world.isClientSide)
+            if (level.isClientSide)
             {
                 return InteractionResult.SUCCESS;
             }
             else
             {
                 BlockState blockstate = state.cycle(SEASON);
-                world.setBlock(pos, blockstate, 4);
-                updatePower(world, pos);
+                level.setBlock(pos, blockstate, 4);
+                updatePower(level, pos);
                 return InteractionResult.SUCCESS;
             }
         }
         else
         {
-            return super.use(state, world, pos, player, hand, rayTraceResult);
+            return super.useWithoutItem(state, level, pos, player, rayTraceResult);
         }
     }
 

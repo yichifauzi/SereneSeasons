@@ -2,23 +2,20 @@
  * Copyright 2022, the Glitchfiend Team.
  * All rights reserved.
  ******************************************************************************/
-package sereneseasons.forge.datagen;
+package sereneseasons.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.*;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import sereneseasons.api.SSBlocks;
 import sereneseasons.api.season.Season;
 import sereneseasons.block.SeasonSensorBlock;
 import sereneseasons.core.SereneSeasons;
-import sereneseasons.forge.core.SereneSeasonsForge;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import static net.minecraftforge.client.model.generators.ModelProvider.BLOCK_FOLDER;
 
 public class SSBlockStateProvider extends BlockStateProvider
 {
@@ -57,7 +54,7 @@ public class SSBlockStateProvider extends BlockStateProvider
 
     public BlockModelBuilder daylightDetector(String name, ResourceLocation top, ResourceLocation side)
     {
-        return this.models().withExistingParent(name, BLOCK_FOLDER + "/template_daylight_detector")
+        return this.models().withExistingParent(name, ModelProvider.BLOCK_FOLDER + "/template_daylight_detector")
             .texture("top", top)
             .texture("side", side);
     }

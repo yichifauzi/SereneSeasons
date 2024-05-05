@@ -1,11 +1,14 @@
 package sereneseasons.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.saveddata.maps.MapId;
 import sereneseasons.api.season.SeasonHelper;
 import sereneseasons.init.ModConfig;
 import sereneseasons.season.SeasonTime;
@@ -22,13 +25,15 @@ public class CalendarItem extends Item
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag)
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag)
     {
-        if (world != null)
+        Level level = Minecraft.getInstance().level;
+
+        if (level != null)
         {
-            if (ModConfig.seasons.isDimensionWhitelisted(world.dimension()))
+            if (ModConfig.seasons.isDimensionWhitelisted(level.dimension()))
             {
-                int seasonCycleTicks = SeasonHelper.getSeasonState(world).getSeasonCycleTicks();
+                int seasonCycleTicks = SeasonHelper.getSeasonState(level).getSeasonCycleTicks();
                 SeasonTime time = new SeasonTime(seasonCycleTicks);
                 int subSeasonDuration = ModConfig.seasons.subSeasonDuration;
 

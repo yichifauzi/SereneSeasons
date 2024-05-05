@@ -6,11 +6,6 @@ plugins {
 
 base.archivesName.set("${mod_name}-neoforge")
 
-mixin {
-    config "${mod_id}.mixins.json"
-    config "${mod_id}.neoforge.mixins.json"
-}
-
 minecraft {
     mappings {
         channel = official()
@@ -33,6 +28,10 @@ runs {
         workingDirectory.set(project.file('run'))
         systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
         programArgument '--nogui'
+    }
+
+    data {
+        programArguments.addAll '--mod', project.mod_id, '--all', '--output', project(':Common').file('src/generated/resources/').getAbsolutePath(), '--existing', project(':Common').file('src/main/resources/').getAbsolutePath()
     }
 }
 
