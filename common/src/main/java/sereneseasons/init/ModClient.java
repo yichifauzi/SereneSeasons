@@ -5,25 +5,34 @@
 package sereneseasons.init;
 
 import glitchcore.event.EventManager;
+import glitchcore.event.client.ItemTooltipEvent;
 import glitchcore.event.client.RegisterColorsEvent;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.saveddata.maps.MapId;
+import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 import sereneseasons.api.SSItems;
 import sereneseasons.api.season.ISeasonColorProvider;
 import sereneseasons.api.season.ISeasonState;
@@ -35,6 +44,8 @@ import sereneseasons.season.SeasonTime;
 import sereneseasons.util.SeasonColorUtil;
 
 import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Locale;
 
 public class ModClient
 {
@@ -48,6 +59,27 @@ public class ModClient
         EventManager.addListener(SeasonHandlerClient::onClientTick);
         EventManager.addListener(ModFertility::setupTooltips);
         EventManager.addListener(ModClient::registerBlockColors);
+        EventManager.addListener(ModClient::onItemTooltip);
+    }
+
+    public static void onItemTooltip(ItemTooltipEvent event)
+    {
+        List<Component> tooltip = event.getTooltip();
+        Player player = event.getPlayer();
+
+        if (player != null && ModConfig.seasons.isDimensionWhitelisted(player.level().dimension()))
+        {
+            int seasonCycleTicks = SeasonHelper.getSeasonState(player.level()).getSeasonCycleTicks();
+            SeasonTime time = new SeasonTime(seasonCycleTicks);
+            int subSeasonDuration = ModConfig.seasons.subSeasonDuration;
+
+            tooltip.add(Component.translatable("desc.sereneseasons." + time.getSubSeason().toString().toLowerCase(Locale.ROOT)).withStyle(ChatFormatting.GRAY).append(Component.literal(" (").withStyle(ChatFormatting.DARK_GRAY)).append(Component.translatable("desc.sereneseasons." + time.getTropicalSeason().toString().toLowerCase(Locale.ROOT)).withStyle(ChatFormatting.DARK_GRAY)).append(Component.literal(")").withStyle(ChatFormatting.DARK_GRAY)));
+            tooltip.add(Component.translatable("desc.sereneseasons.day_counter", (time.getDay() % subSeasonDuration) + 1, subSeasonDuration).withStyle(ChatFormatting.GRAY).append(Component.translatable("desc.sereneseasons.tropical_day_counter", (((time.getDay() + subSeasonDuration) % (subSeasonDuration * 2)) + 1), subSeasonDuration * 2).withStyle(ChatFormatting.DARK_GRAY)));
+        }
+        else
+        {
+            tooltip.add(Component.literal("???").withStyle(ChatFormatting.GRAY));
+        }
     }
 
     public static void registerItemProperties()
