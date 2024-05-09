@@ -67,6 +67,9 @@ public class ModClient
         List<Component> tooltip = event.getTooltip();
         Player player = event.getPlayer();
 
+        if (event.getStack().getItem() != SSItems.CALENDAR)
+            return;
+
         if (player != null && ModConfig.seasons.isDimensionWhitelisted(player.level().dimension()))
         {
             int seasonCycleTicks = SeasonHelper.getSeasonState(player.level()).getSeasonCycleTicks();
