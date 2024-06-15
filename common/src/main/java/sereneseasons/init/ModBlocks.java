@@ -18,7 +18,7 @@ public class ModBlocks
 
     private static Block register(BiConsumer<ResourceLocation, Block> func, Block block, String name)
     {
-        func.accept(new ResourceLocation(SereneSeasons.MOD_ID, name), block);
+        func.accept(ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, name), block);
         return block;
     }
 }

@@ -42,7 +42,7 @@ public class ModItems
 
     private static Item register(BiConsumer<ResourceLocation, Item> func, String name, Item item)
     {
-        func.accept(new ResourceLocation(SereneSeasons.MOD_ID, name), item);
+        func.accept(ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, name), item);
         return item;
     }
 }

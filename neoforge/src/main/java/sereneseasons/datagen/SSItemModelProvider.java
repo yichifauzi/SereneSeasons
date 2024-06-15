@@ -68,6 +68,6 @@ public class SSItemModelProvider extends ItemModelProvider
 
     private static ResourceLocation location(String name)
     {
-        return new ResourceLocation(SereneSeasons.MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, name);
     }
 }

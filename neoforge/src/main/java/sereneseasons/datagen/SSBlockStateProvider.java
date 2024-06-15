@@ -47,8 +47,8 @@ public class SSBlockStateProvider extends BlockStateProvider
     public BlockModelBuilder seasonSensor(Season season)
     {
         String name = "season_sensor_" + season.name().toLowerCase();
-        ResourceLocation topTexture = new ResourceLocation(SereneSeasons.MOD_ID, ModelProvider.BLOCK_FOLDER + "/" + name + "_top");
-        ResourceLocation sideTexture = new ResourceLocation(SereneSeasons.MOD_ID, ModelProvider.BLOCK_FOLDER + "/season_sensor_side");
+        ResourceLocation topTexture = ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, ModelProvider.BLOCK_FOLDER + "/" + name + "_top");
+        ResourceLocation sideTexture = ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, ModelProvider.BLOCK_FOLDER + "/season_sensor_side");
         return this.daylightDetector(name, topTexture, sideTexture);
     }
 

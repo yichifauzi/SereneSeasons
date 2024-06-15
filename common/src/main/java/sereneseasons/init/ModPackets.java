@@ -12,7 +12,7 @@ import sereneseasons.network.SyncSeasonCyclePacket;
 
 public class ModPackets
 {
-    private static final ResourceLocation CHANNEL = new ResourceLocation(SereneSeasons.MOD_ID, "main");
+    private static final ResourceLocation CHANNEL = ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, "main");
     public static final PacketHandler HANDLER = new PacketHandler(CHANNEL);
 
     public static void init()
@@ -22,6 +22,6 @@ public class ModPackets
 
     public static void register(String name, CustomPacket<?> packet)
     {
-        HANDLER.register(new ResourceLocation(SereneSeasons.MOD_ID, name), packet);
+        HANDLER.register(ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, name), packet);
     }
 }

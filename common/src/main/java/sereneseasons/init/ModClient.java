@@ -87,7 +87,7 @@ public class ModClient
 
     public static void registerItemProperties()
     {
-        ItemProperties.register(SSItems.CALENDAR, new ResourceLocation(SereneSeasons.MOD_ID, "time"), new ClampedItemPropertyFunction()
+        ItemProperties.register(SSItems.CALENDAR, ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, "time"), new ClampedItemPropertyFunction()
         {
             @Override
             public float unclampedCall(ItemStack stack, ClientLevel clientWorld, LivingEntity entity, int seed)
@@ -116,7 +116,7 @@ public class ModClient
             }
         });
 
-        ItemProperties.register(SSItems.CALENDAR, new ResourceLocation(SereneSeasons.MOD_ID, "seasontype"), new ClampedItemPropertyFunction()
+        ItemProperties.register(SSItems.CALENDAR, ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, "seasontype"), new ClampedItemPropertyFunction()
         {
             @Override
             public float unclampedCall(ItemStack stack, ClientLevel clientWorld, LivingEntity entity, int seed)

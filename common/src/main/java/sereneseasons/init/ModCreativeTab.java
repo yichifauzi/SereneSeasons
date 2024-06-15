@@ -47,7 +47,7 @@ public class ModCreativeTab
 
     private static CreativeModeTab register(BiConsumer<ResourceLocation, CreativeModeTab> func, String name, CreativeModeTab tab)
     {
-        func.accept(new ResourceLocation(SereneSeasons.MOD_ID, name), tab);
+        func.accept(ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, name), tab);
         return tab;
     }
 }

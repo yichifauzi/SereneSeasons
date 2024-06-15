@@ -30,7 +30,7 @@ public class SeasonCommands
 
     private static ArgumentTypeInfo<?, ?> register(BiConsumer<ResourceLocation, ArgumentTypeInfo<?, ?>> func, String name, Class<?> clazz, ArgumentTypeInfo<?, ?> typeInfo)
     {
-        func.accept(new ResourceLocation(SereneSeasons.MOD_ID, name), typeInfo);
+        func.accept(ResourceLocation.fromNamespaceAndPath(SereneSeasons.MOD_ID, name), typeInfo);
         ArgumentTypeInfos.BY_CLASS.put(clazz, typeInfo);
         return typeInfo;
     }

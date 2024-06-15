@@ -23,13 +23,13 @@ public class ModTags
     {
         private static void setup() {}
 
-        public static final TagKey<Block> SPRING_CROPS = create(new ResourceLocation("sereneseasons:spring_crops"));
-        public static final TagKey<Block> SUMMER_CROPS = create(new ResourceLocation("sereneseasons:summer_crops"));
-        public static final TagKey<Block> AUTUMN_CROPS = create(new ResourceLocation("sereneseasons:autumn_crops"));
-        public static final TagKey<Block> WINTER_CROPS = create(new ResourceLocation("sereneseasons:winter_crops"));
+        public static final TagKey<Block> SPRING_CROPS = create(ResourceLocation.parse("sereneseasons:spring_crops"));
+        public static final TagKey<Block> SUMMER_CROPS = create(ResourceLocation.parse("sereneseasons:summer_crops"));
+        public static final TagKey<Block> AUTUMN_CROPS = create(ResourceLocation.parse("sereneseasons:autumn_crops"));
+        public static final TagKey<Block> WINTER_CROPS = create(ResourceLocation.parse("sereneseasons:winter_crops"));
 
-        public static final TagKey<Block> GREENHOUSE_GLASS = create(new ResourceLocation("sereneseasons:greenhouse_glass"));
-        public static final TagKey<Block> UNBREAKABLE_INFERTILE_CROPS = create(new ResourceLocation("sereneseasons:unbreakable_infertile_crops"));
+        public static final TagKey<Block> GREENHOUSE_GLASS = create(ResourceLocation.parse("sereneseasons:greenhouse_glass"));
+        public static final TagKey<Block> UNBREAKABLE_INFERTILE_CROPS = create(ResourceLocation.parse("sereneseasons:unbreakable_infertile_crops"));
 
         public static TagKey<Block> create(ResourceLocation name)
         {
@@ -41,10 +41,10 @@ public class ModTags
     {
         private static void setup() {}
 
-        public static final TagKey<Item> SPRING_CROPS = create(new ResourceLocation("sereneseasons:spring_crops"));
-        public static final TagKey<Item> SUMMER_CROPS = create(new ResourceLocation("sereneseasons:summer_crops"));
-        public static final TagKey<Item> AUTUMN_CROPS = create(new ResourceLocation("sereneseasons:autumn_crops"));
-        public static final TagKey<Item> WINTER_CROPS = create(new ResourceLocation("sereneseasons:winter_crops"));
+        public static final TagKey<Item> SPRING_CROPS = create(ResourceLocation.parse("sereneseasons:spring_crops"));
+        public static final TagKey<Item> SUMMER_CROPS = create(ResourceLocation.parse("sereneseasons:summer_crops"));
+        public static final TagKey<Item> AUTUMN_CROPS = create(ResourceLocation.parse("sereneseasons:autumn_crops"));
+        public static final TagKey<Item> WINTER_CROPS = create(ResourceLocation.parse("sereneseasons:winter_crops"));
 
         public static TagKey<Item> create(ResourceLocation name)
         {
@@ -56,10 +56,10 @@ public class ModTags
     {
         private static void setup() {}
 
-        public static final TagKey<Biome> BLACKLISTED_BIOMES = createBiomeTag(new ResourceLocation("sereneseasons:blacklisted_biomes"));
-        public static final TagKey<Biome> INFERTILE_BIOMES = createBiomeTag(new ResourceLocation("sereneseasons:infertile_biomes"));
-        public static final TagKey<Biome> LESSER_COLOR_CHANGE_BIOMES = createBiomeTag(new ResourceLocation("sereneseasons:lesser_color_change_biomes"));
-        public static final TagKey<Biome> TROPICAL_BIOMES = createBiomeTag(new ResourceLocation("sereneseasons:tropical_biomes"));
+        public static final TagKey<Biome> BLACKLISTED_BIOMES = createBiomeTag(ResourceLocation.parse("sereneseasons:blacklisted_biomes"));
+        public static final TagKey<Biome> INFERTILE_BIOMES = createBiomeTag(ResourceLocation.parse("sereneseasons:infertile_biomes"));
+        public static final TagKey<Biome> LESSER_COLOR_CHANGE_BIOMES = createBiomeTag(ResourceLocation.parse("sereneseasons:lesser_color_change_biomes"));
+        public static final TagKey<Biome> TROPICAL_BIOMES = createBiomeTag(ResourceLocation.parse("sereneseasons:tropical_biomes"));
     }
 
     private static TagKey<Biome> createBiomeTag(ResourceLocation name) {

@@ -35,7 +35,7 @@ public class SyncSeasonCyclePacket implements CustomPacket<SyncSeasonCyclePacket
     @Override
     public SyncSeasonCyclePacket decode(FriendlyByteBuf buf)
     {
-        return new SyncSeasonCyclePacket(ResourceKey.create(Registries.DIMENSION, new ResourceLocation(buf.readUtf())), buf.readInt());
+        return new SyncSeasonCyclePacket(ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(buf.readUtf())), buf.readInt());
     }
 
     @Override

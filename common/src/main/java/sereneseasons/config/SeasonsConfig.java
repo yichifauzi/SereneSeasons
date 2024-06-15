@@ -57,7 +57,7 @@ public class SeasonsConfig extends glitchcore.config.Config
         {
             try
             {
-                new ResourceLocation(s);
+                ResourceLocation.parse(s);
             }
             catch (Exception e)
             {
